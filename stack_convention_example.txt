@@ -1,0 +1,18 @@
+my_function:
+    push ebp            ; Store the current stack frame
+    mov  ebp, esp       ; Preserve ESP into EBP for argument references
+    and  esp, 0xfffffff0; Align the stack to allow library calls
+    mov  eax, [ebp+8]   ; Move the contents of EBP+8 into EAX
+                        ; [EBP] should be the saved 32 bit EBP.
+                        ; [EBP+4] should be the 32 bit EIP (return address).
+                        ; [EBP+8] should be the pushed parameter.
+    ...                 ; Do lots of cool stuff
+    mov  esp, ebp       ; Restore the stack and ebp
+    pop  ebp
+    ret
+
+
+main:
+   push 0x08
+   call my_function
+   pop ebx              ; Clean up the stack
