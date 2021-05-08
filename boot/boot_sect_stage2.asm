@@ -1,7 +1,7 @@
 [ORG 0x800]
 [bits 16]
 KERNEL equ 0x1000
-KERNEL_SECTORS equ 16
+KERNEL_SECTORS equ 48
 
 VIDEO_TEXT_ADDR     EQU 0xb8000 ; Hard code beginning of text video memory
 ATTR_WHITE_ON_BLACK EQU 0x07    ; White on black attribute
@@ -11,7 +11,7 @@ LF                  EQU 0x0a    ; Line feed
 
 
 	mov bx, KERNEL ;Memory location where bootloader stage 2 is loaded
-    mov dh, 1 ; Number of sectors to read (Size of stage 2 + kernel ) TODO
+    mov dh, KERNEL_SECTORS ; Number of sectors to read (Size of stage 2 + kernel ) TODO
 	mov cl, 0x03 ; sector to start read
 	call disk_load
 	
