@@ -21,7 +21,7 @@ TODO:
 
 ![RTL8139_REGISTER_MEM (1)](https://user-images.githubusercontent.com/24198081/117540149-9ff6aa80-b005-11eb-9ba1-32a46ea31ab5.png)
 
-# RTL 8139 Receive Packet Handler Registers: receive_packet()
+# RTL8139 Receive Packet Handler Registers: receive_packet()
 
 ![rtl8139_rcv_packet (1)](https://user-images.githubusercontent.com/24198081/117544822-0df99c80-b01b-11eb-9c7b-559763840a96.png)
 
