@@ -167,14 +167,6 @@ void receive_packet() {
 	kprint(packet_length_str);
     // Skip, packet header and packet length, now t points to the packet data
     t = t + 2;
-    //qemu_printf("Printing packet at addr 0x%x\n", (uint32_t)t);
-    //xxd(t, packet_length);
-
-    // Now, ethernet layer starts to handle the packet(be sure to make a copy of the packet, insteading of using the buffer)
-    // and probabbly this should be done in a separate thread...
-   // void * packet = kmalloc(packet_length);
-   // memcpy(packet, t, packet_length);
-    //ethernet_handle_packet(packet, packet_length);
 
     current_packet_ptr = (current_packet_ptr + packet_length + 4 + 3) & RX_READ_POINTER_MASK; // Make sure current pointer 32 bits aligned
 
