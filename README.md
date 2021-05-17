@@ -33,7 +33,7 @@ TODO:
 TODO
 The idea is to create whole network stack based on Linux kernel structure.
 
-Below networking traffic flow was created based on reading Kernel source code version 3.19
+The following networking diagram was created based on my interpretation of reading Kernel source code version 3.19. It doesn't cover all functions, only the most important ones for IP and XFRM.
 
 ![kernel_xfrm_fwd_v2](https://user-images.githubusercontent.com/24198081/118406205-0c5f5280-b673-11eb-826f-4f56a666118d.png)
 
