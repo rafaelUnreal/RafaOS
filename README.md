@@ -29,6 +29,12 @@ TODO:
 
 ![rtl8139_rcv_packet (1)](https://user-images.githubusercontent.com/24198081/117544822-0df99c80-b01b-11eb-9c7b-559763840a96.png)
 
+# RTL8139 Protocol Handler Registration and Organization
+
+![protocol_handler_organization](https://user-images.githubusercontent.com/24198081/118883512-39b73500-b8ed-11eb-8366-3c41f9b1ff56.png)
+
+
+
 # RafaOS Network Stack:
 TODO
 The idea is to create whole network stack based on Linux kernel structure.
