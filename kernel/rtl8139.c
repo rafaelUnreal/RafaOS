@@ -2,8 +2,19 @@
 #include "../drivers/screen.h"
 #include "idt.h"
 #include "util.h"
+#include "list.h"
+#include "dev.h"
 
 uint32_t current_packet_ptr;
+
+extern struct list_head ptype_base[PTYPE_HASH_SIZE];
+
+typedef struct ethernet_frame {
+  uint8_t dst_mac_addr[6];
+  uint8_t src_mac_addr[6];
+  uint16_t type;
+  uint8_t data[];
+} __attribute__((packed)) ethernet_frame_t;
 
 
 void rtl8139_init(){
@@ -82,7 +93,7 @@ void rtl8139_init(){
 	 	
 	kprint("AB+AM+APM+AAP;\n");
 	 // (1 << 7) is the WRAP bit, 0xf is AB+AM+APM+AAP
-    outportl(rtl8139_device.io_base + 0x44, 0xF  );
+    outportl(rtl8139_device.io_base + 0x44, 0xF | (1<<7) );
 	 
 	
 	kprint("configure rtl8139 interrupt handler\n");
@@ -163,10 +174,42 @@ void receive_packet() {
 	
 	
 	hex_to_ascii(packet_length,packet_length_str);
-	kprint("packet len:");
-	kprint(packet_length_str);
+	//kprint("packet len:");
+	//kprint(packet_length_str);
     // Skip, packet header and packet length, now t points to the packet data
     t = t + 2;
+	
+	uint32_t phys_addr;
+    void * _packet = kmalloc(packet_length,1,&phys_addr);
+    memory_copy((uint8_t *) t,(uint8_t*)_packet, packet_length);
+	
+	
+	ethernet_frame_t * packet = _packet;
+	
+	int data_len = packet_length - sizeof(ethernet_frame_t);
+    // ARP packet
+	
+	char packet_type_str[16];
+	//hex_to_ascii(ntohs(packet->type),packet_type_str);
+	//kprint("packet type:");
+	//kprint(packet_type_str);
+	
+	struct list_head *p;
+	struct packet_type *pt;
+	
+	list_for_each(p,&ptype_base[0]){
+		pt=list_entry(p,struct packet_type,list);
+		if(pt->type == packet->type){
+			pt->func(NULL,NULL,NULL);
+		}
+		
+	}
+
+   // if(packet->type == 0x0608) {
+
+	//	kprint("ARP Packet");
+        //arp_handle_packet(data, data_len);
+    //}
 
     current_packet_ptr = (current_packet_ptr + packet_length + 4 + 3) & RX_READ_POINTER_MASK; // Make sure current pointer 32 bits aligned
 
