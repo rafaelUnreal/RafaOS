@@ -34,8 +34,7 @@ TODO:
 ![protocol_handler_organization](https://user-images.githubusercontent.com/24198081/118883512-39b73500-b8ed-11eb-8366-3c41f9b1ff56.png)
 
 
-
-# RafaOS Network Stack:
+# Packet Networking Path:
 TODO
 The idea is to create whole network stack based on Linux kernel structure.
 
@@ -43,7 +42,7 @@ The following networking diagram was created based on my interpretation of readi
 
 ![kernel_xfrm_fwd (1)](https://user-images.githubusercontent.com/24198081/118876712-797a1e80-b8e5-11eb-8bda-85937a8be9f8.png)
 
-# RafaOS Routing Subsystem
+# Routing Subsystem
 
 Routing engine implemented will based on Linux kernel 3.6+ LPC-trie. Diagram below should ilustrate the structures and relatiotionship between each other based on my understanding of Linux kernel:
 
