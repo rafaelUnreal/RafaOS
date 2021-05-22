@@ -50,8 +50,8 @@ Routing engine implemented will based on Linux kernel 3.6+ LPC-trie. Diagram bel
 ![routing_trie](https://user-images.githubusercontent.com/24198081/119225986-def52780-bafe-11eb-9666-70b070d8ad66.png)
 
 
-References: 
-https://elixir.bootlin.com/linux/v4.0/source/net/ipv4/fib_trie.c
-https://vincent.bernat.ch/en/blog/2017-ipv4-route-lookup-linux
+References:  
+https://elixir.bootlin.com/linux/v4.0/source/net/ipv4/fib_trie.c  
+https://vincent.bernat.ch/en/blog/2017-ipv4-route-lookup-linux  
 
 
