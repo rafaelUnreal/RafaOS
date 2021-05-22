@@ -43,3 +43,15 @@ The following networking diagram was created based on my interpretation of readi
 
 ![kernel_xfrm_fwd (1)](https://user-images.githubusercontent.com/24198081/118876712-797a1e80-b8e5-11eb-8bda-85937a8be9f8.png)
 
+# RafaOS Routing Subsystem
+
+Routing engine implemented will based on Linux kernel 3.6+ LPC-trie. Diagram below should ilustrate the structures and relatiotionship between each other based on my understanding of Linux kernel:
+
+![routing_trie](https://user-images.githubusercontent.com/24198081/119225986-def52780-bafe-11eb-9666-70b070d8ad66.png)
+
+
+References: 
+https://elixir.bootlin.com/linux/v4.0/source/net/ipv4/fib_trie.c
+https://vincent.bernat.ch/en/blog/2017-ipv4-route-lookup-linux
+
+
